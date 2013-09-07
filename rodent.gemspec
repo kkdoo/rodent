@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Artem Maschenko']
   s.email       = ['artem.maschenko@gmail.com']
-  s.homepage    = 'http://goliath.io/'
+  s.homepage    = 'https://github.com/kkdoo/rodent'
   s.summary     = 'Framework for micro services'
   s.description = s.summary
   s.license     = 'MIT'
