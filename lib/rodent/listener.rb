@@ -1,3 +1,4 @@
+require 'json'
 require 'multi_json'
 require 'amqp'
 
@@ -17,15 +18,15 @@ module Rodent
         queue = channel.queue(@type, exclusive: true, auto_delete: true)
         queue.bind(channel.direct('rodent.requests'), routing_key: @type)
         queue.subscribe(ack: true) do |metadata, payload|
-          self.params = MultiJson.load(payload)
-          self.body = call
+          self.body = call(MultiJson.load(payload))
           channel.default_exchange.publish(MultiJson.dump(response), routing_key: metadata.reply_to, correlation_id: metadata.message_id)
           metadata.ack
         end
       end
     end
 
-    def call
+    def call(params = {})
+      self.params = params
       self.status = 200
       self.headers = {}
       unless respond_to?(method_name)

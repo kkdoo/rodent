@@ -1,4 +1,5 @@
 require 'bson'
+require 'json'
 require 'multi_json'
 require 'amqp'
 require 'goliath'
@@ -19,7 +20,8 @@ module Rodent
         downstream_callback = proc do |status, headers, response|
           result_response = [status, headers, response]
           if proxy_type = headers.delete(@header_proxy_name)
-            result_response = safely(env) { proxy_request(env, proxy_type, response.body.join, headers) }
+            body = response.respond_to?(:body) ? response.body.join : response
+            result_response = safely(env) { proxy_request(env, proxy_type, body, headers) }
           end
           async_callback.call(result_response) unless result_response == ::Goliath::Connection::AsyncResponse
         end
@@ -41,8 +43,8 @@ module Rodent
           consumer.consume do
             consumer.on_delivery do |metadata, payload|
               response = MultiJson.load(payload)
-              response['Content-Length'] = response['body'].length.to_s
-              response['Content-Type'] = 'application/json'
+              response['headers']['Content-Length'] = response['body'].length.to_s
+              response['headers']['Content-Type'] = 'application/json'
               async_callback.call([response['status'], headers.merge(response['headers']), response['body']])
               metadata.ack
               consumer.cancel
