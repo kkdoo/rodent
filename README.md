@@ -51,7 +51,6 @@ end
 class ProxyApp < Goliath::API
   plugin Rodent::Goliath::Plugin
   use Rodent::Goliath::Middleware
-  use Goliath::Rack::Params
 
   def response(env)
     CustomersProxy.call(env)
@@ -118,7 +117,7 @@ Then you can test it
 $> curl -X POST localhost:3000/v1/customers -d "name=Bob" -d "email=bob@example.com"
 ```
 
-## Performance:
+## Performance
 
 My results is below
 
