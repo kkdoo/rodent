@@ -40,9 +40,10 @@ describe Rodent::Base do
   it 'should return right response' do
     params = {name: 'Bob Marley', email: 'bob@example.com'}
 
-    @channel.direct('rodent.requests').publish(MultiJson.dump(params), routing_key: 'customers.create', message_id: @message_id, reply_to: @replies_queue.name)
+    @channel.direct('rodent.requests').publish MultiJson.dump(params), routing_key: 'customers.create',
+      message_id: @message_id, reply_to: @replies_queue.name
 
-    done(0.5) do
+    done(2.0) do
       @response.should_not be_nil
       @response['status'].should == 201
       @response['headers'].should == {'API-Version' => 'v1'}

@@ -39,22 +39,25 @@ module Rodent
           replies_queue = channel.queue(message_id, exclusive: true, auto_delete: true)
 
           consumer = AMQP::Consumer.new(channel, replies_queue)
-
-          consumer.consume do
-            consumer.on_delivery do |metadata, payload|
-              response = MultiJson.load(payload)
-              response['headers']['Content-Length'] = response['body'].length.to_s
-              response['headers']['Content-Type'] = 'application/json'
-              async_callback.call([response['status'], headers.merge(response['headers']), response['body']])
-              metadata.ack
-              consumer.cancel
-            end
-          end
+          bind_consumer(consumer, async_callback, headers)
 
           channel.direct('rodent.requests').publish(body, routing_key: type, message_id: message_id, reply_to: replies_queue.name)
         end
 
         ::Goliath::Connection::AsyncResponse
+      end
+
+      def bind_consumer(consumer, async_callback, headers)
+        consumer.consume do
+          consumer.on_delivery do |metadata, payload|
+            response = MultiJson.load(payload)
+            response['headers']['Content-Length'] = response['body'].length.to_s
+            response['headers']['Content-Type'] = 'application/json'
+            async_callback.call([response['status'], headers.merge(response['headers']), response['body']])
+            metadata.ack
+            consumer.cancel
+          end
+        end
       end
     end
   end
