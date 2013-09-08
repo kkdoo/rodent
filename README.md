@@ -1,6 +1,6 @@
 # Rodent
 
-[![Code Climate](https://codeclimate.com/github/kkdoo/rodent.png)](https://codeclimate.com/github/kkdoo/rodent)[![Build Status](https://travis-ci.org/kkdoo/rodent.png?branch=master)](https://travis-ci.org/kkdoo/rodent)[![Dependency Status](https://gemnasium.com/kkdoo/rodent.png)](https://gemnasium.com/kkdoo/rodent)
+[![Code Climate](https://codeclimate.com/github/kkdoo/rodent.png)](https://codeclimate.com/github/kkdoo/rodent) [![Build Status](https://travis-ci.org/kkdoo/rodent.png?branch=master)](https://travis-ci.org/kkdoo/rodent) [![Dependency Status](https://gemnasium.com/kkdoo/rodent.png)](https://gemnasium.com/kkdoo/rodent)
 
 Rodent is an open source asynchronous framework for Micro Service Architecture (MSA). It is a lightweight and designed to easily develop APIs. Main goals is scaling, simplicity and perfomance.
 
