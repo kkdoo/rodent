@@ -1,3 +1,5 @@
 Gemfile.lock
 log/*.log
 *.gem
+.yardoc/
+doc/

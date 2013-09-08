@@ -28,6 +28,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'em-http-request'
   s.add_development_dependency 'rack-test'
   s.add_development_dependency 'evented-spec'
+  s.add_development_dependency 'redcarpet'
+  s.add_development_dependency 'yard'
 
   s.files = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

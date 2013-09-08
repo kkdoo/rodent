@@ -1,0 +1,4 @@
+--main README.md
+--no-private
+--markup-provider=redcarpet
+--markup=markdown
