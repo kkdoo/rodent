@@ -29,7 +29,9 @@ describe Rodent::Base do
       end
     end
 
-    CustomersAPI.bind
+    done do
+      CustomersAPI.bind
+    end
   end
 
   after(:all) do
