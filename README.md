@@ -2,7 +2,7 @@
 
 Rodent is an open source asynchronous framework for Micro Service Architecture (MSA). It is a lightweight and designed to easily develop APIs. Main goals is scaling, simplicity and perfomance.
 
-The framework uses [Goliath](https://github.com/postrank-labs/goliath) as HTTP proxy and [AMQP](https://github.com/ruby-amqp/amqp) protocol to connect MSA for handling requests. Micro Services can be runned separately and multiple times for scaling, hot-reloading or language independence. All requests are load balanced with same MSA.
+The framework uses [Goliath](https://github.com/postrank-labs/goliath) as HTTP proxy and [AMQP](https://github.com/ruby-amqp/amqp) protocol to connect MSA for handling requests. Micro Services can be run separately and multiple times for scaling, hot-reloading or language independence. All requests are load balanced with same MSA.
 
 You can learn more about MSA in great [article](http://yobriefca.se/blog/2013/04/29/micro-service-architecture/) by James Hughes.
 
