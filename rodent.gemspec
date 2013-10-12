@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'multi_json'
   s.add_dependency 'goliath'
-  s.add_dependency 'amqp'
+  s.add_dependency 'amqp', '~> 1.1.0.rc1'
   s.add_dependency 'em-synchrony'
   s.add_dependency 'bson_ext'
 
