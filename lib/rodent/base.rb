@@ -2,6 +2,7 @@ module Rodent
   class Base
     class << self
       attr_reader :listeners, :instance
+      attr_accessor :error_handler
 
       def listeners
         @listeners ||= []
@@ -19,7 +20,9 @@ module Rodent
       end
 
       def bind
-        listeners.each(&:bind)
+        listeners.each do |listener|
+          listener.bind(error_handler)
+        end
       end
     end
   end

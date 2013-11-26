@@ -12,14 +12,18 @@ module Rodent
       @source = block
     end
 
-    def bind
+    def bind(error_handler)
       AMQP::Channel.new do |channel|
         channel.prefetch(100)
         queue = channel.queue(@type, exclusive: true, auto_delete: true)
         queue.bind(channel.direct('rodent.requests'), routing_key: @type)
         queue.subscribe(ack: true) do |metadata, payload|
-          self.body = call(MultiJson.load(payload))
-          channel.default_exchange.publish(MultiJson.dump(response), routing_key: metadata.reply_to, correlation_id: metadata.message_id)
+          begin
+            self.body = call(MultiJson.load(payload))
+            channel.default_exchange.publish(MultiJson.dump(response), routing_key: metadata.reply_to, correlation_id: metadata.message_id)
+          rescue Exception => e
+            error_handler.call(e) if error_handler
+          end
           metadata.ack
         end
       end
