@@ -20,10 +20,10 @@ module Rodent
         queue.subscribe(ack: true) do |metadata, payload|
           begin
             self.body = call(MultiJson.load(payload))
-            channel.default_exchange.publish(MultiJson.dump(response), routing_key: metadata.reply_to, correlation_id: metadata.message_id)
           rescue Exception => e
             error_handler.call(e) if error_handler
           end
+          channel.default_exchange.publish(MultiJson.dump(response), routing_key: metadata.reply_to, correlation_id: metadata.message_id)
           metadata.ack
         end
       end
