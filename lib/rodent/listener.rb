@@ -21,7 +21,7 @@ module Rodent
           begin
             self.body = call(MultiJson.load(payload))
           rescue Exception => e
-            error_handler.call(e) if error_handler
+            self.status, self.headers, self.body = error_handler.call(e) if error_handler
           end
           channel.default_exchange.publish(MultiJson.dump(response), routing_key: metadata.reply_to, correlation_id: metadata.message_id)
           metadata.ack
