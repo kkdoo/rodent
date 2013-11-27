@@ -51,7 +51,7 @@ module Rodent
         consumer.consume do
           consumer.on_delivery do |metadata, payload|
             response = MultiJson.load(payload)
-            response['headers']['Content-Length'] = response['body'].to_s.bytes.length.to_s
+            response['headers']['Content-Length'] = response['body'].to_s.bytes.count.to_s
             response['headers']['Content-Type'] = 'application/json'
             async_callback.call([response['status'], headers.merge(response['headers']), response['body']])
             metadata.ack
