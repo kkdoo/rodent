@@ -154,3 +154,7 @@ Total:         51  120  40.7    117     235
 ## License & Acknowledgments
 
 Rodent is distributed under the MIT license, for full details please see the LICENSE file.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kkdoo/rodent/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
