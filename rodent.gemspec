@@ -10,26 +10,26 @@ Gem::Specification.new do |s|
   s.email       = ['artem.maschenko@gmail.com']
   s.homepage    = 'https://github.com/kkdoo/rodent'
   s.summary     = 'Framework for micro services'
-  s.description = s.summary
+  s.description = 'Rodent is an open source asynchronous framework for Micro Service Architecture (MSA). It is a lightweight and designed to easily develop APIs. Main goals is scaling, simplicity and perfomance.'
   s.license     = 'MIT'
 
   s.rubyforge_project = 'rodent'
 
   s.required_ruby_version = '>=1.9.2'
 
-  s.add_dependency 'multi_json'
-  s.add_dependency 'goliath'
-  s.add_dependency 'amqp'
-  s.add_dependency 'em-synchrony'
-  s.add_dependency 'bson_ext'
+  s.add_runtime_dependency 'multi_json', '~> 0'
+  s.add_runtime_dependency 'goliath', '~> 0'
+  s.add_runtime_dependency 'amqp', '~> 0'
+  s.add_runtime_dependency 'em-synchrony', '~> 0'
+  s.add_runtime_dependency 'bson_ext', '~> 0'
 
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'em-http-request'
-  s.add_development_dependency 'rack-test'
-  s.add_development_dependency 'evented-spec'
-  s.add_development_dependency 'redcarpet'
-  s.add_development_dependency 'yard'
+  s.add_development_dependency 'rake', '~> 0'
+  s.add_development_dependency 'rspec', '~> 0'
+  s.add_development_dependency 'em-http-request', '~> 0'
+  s.add_development_dependency 'rack-test', '~> 0'
+  s.add_development_dependency 'evented-spec', '~> 0'
+  s.add_development_dependency 'redcarpet', '~> 0'
+  s.add_development_dependency 'yard', '~> 0'
 
   s.files = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
