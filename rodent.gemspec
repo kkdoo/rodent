@@ -23,12 +23,12 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'em-synchrony', '~> 1.0.3'
   s.add_runtime_dependency 'bson_ext', '~> 1.10.0'
 
-  s.add_development_dependency 'rake', '~> 0'
+  s.add_development_dependency 'rake', '~> 10.2.2'
   s.add_development_dependency 'rspec', '~> 2.14.1'
   s.add_development_dependency 'em-http-request', '~> 1.1.1'
   s.add_development_dependency 'rack-test', '~> 0.6.2'
   s.add_development_dependency 'evented-spec', '~> 0'
-  s.add_development_dependency 'redcarpet', '~> 3.0.0'
+  s.add_development_dependency 'redcarpet', '~> 3.1.1'
   s.add_development_dependency 'yard', '~> 0.8.7.3'
 
   s.files = `git ls-files`.split("\n")
