@@ -17,11 +17,11 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>=1.9.2'
 
-  s.add_runtime_dependency 'multi_json', '~> 1.8.4'
+  s.add_runtime_dependency 'multi_json', '~> 1.9.2'
   s.add_runtime_dependency 'goliath', '~> 1.0.3'
-  s.add_runtime_dependency 'amqp', '~> 1.2.1'
+  s.add_runtime_dependency 'amqp', '~> 1.3.0'
   s.add_runtime_dependency 'em-synchrony', '~> 1.0.3'
-  s.add_runtime_dependency 'bson_ext', '~> 1.9.2'
+  s.add_runtime_dependency 'bson_ext', '~> 1.10.0'
 
   s.add_development_dependency 'rake', '~> 0'
   s.add_development_dependency 'rspec', '~> 2.14.1'
